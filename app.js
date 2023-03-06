@@ -1,19 +1,9 @@
-console.log("starting");
+const request = require("postman-request");
 
-setTimeout(() => {
-  console.log("5 second timer");
-}, 5000);
+const url =
+  "http://api.weatherstack.com/current?access_key=8c40e000413e99e5077a81829f481ddb&query=-7.399553382160208,109.67992040301874";
 
-setTimeout(() => {
-  console.log("3 second timer");
-}, 3000);
-
-setTimeout(() => {
-  console.log("0 second timer");
-}, 0);
-
-setTimeout(() => {
-  console.log("1 second timer");
-}, 1000);
-
-console.log("stopping");
+request({ url: url }, (error, response) => {
+  const data = JSON.parse(response.body);
+  console.log(data.current);
+});
