@@ -39,6 +39,10 @@ app.get("/help", (req, res) => {
   });
 });
 
+app.get("/help/*", (req, res) => {
+  res.send("No article");
+});
+
 app.get("/weather", (req, res) => {
   res.send([
     {
@@ -47,6 +51,12 @@ app.get("/weather", (req, res) => {
       creator: "Afiv",
     },
   ]);
+});
+
+app.get("*", (req, res) => {
+  res.render("404", {
+    errorMessage: "Page Not Found",
+  });
 });
 
 app.listen(3000, () => {
