@@ -11,7 +11,7 @@ const forecast = (latitude, longitude, callback) => {
   request({ url: url, json: true }, (error, { body }) => {
     if (error) {
       callback("Unable to connect service", undefined);
-    } else if (body.error) {
+    } else if (body.success === false) {
       callback("Unable to find location", undefined);
     } else {
       callback(
